@@ -4,7 +4,18 @@ version = "0.1.0"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib", "staticlib", "lib"]
 
 [dependencies]
+interoptopus = { version="0.14.15", optional=true }
 serde = { version="1.0.132", features=["derive"] }
 serde_divatree = { git = "https://github.com/Waelwindows/serde_divatree" }
+
+[features]
+default = ["ffi"]
+ffi = ["interoptopus"]
+
+[dev-dependencies]
+interoptopus_backend_c = "0.14.15"
+interoptopus_backend_cpython = "0.14.15"

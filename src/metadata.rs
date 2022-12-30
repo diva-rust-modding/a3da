@@ -2,17 +2,17 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Metadata {
-    converter: Converter,
-    property: Property,
-    file_name: String,
+    pub converter: Converter,
+    pub property: Property,
+    pub file_name: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Converter {
-    version: usize,
+    pub version: u32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Property {
-    version: usize,
+    pub version: u32,
 }

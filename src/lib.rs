@@ -1,6 +1,8 @@
 use serde::{Deserialize, Serialize};
 
 pub mod camera;
+#[cfg(feature = "ffi")]
+pub mod ffi;
 pub mod keyframe;
 pub mod metadata;
 
@@ -17,9 +19,9 @@ pub struct A3da {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct PlayControl {
-    pub begin: usize,
-    pub fps: usize,
-    pub size: usize,
+    pub begin: u32,
+    pub fps: u32,
+    pub size: u32,
 }
 
 #[cfg(test)]
