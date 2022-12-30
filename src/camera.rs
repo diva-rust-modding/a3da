@@ -7,7 +7,8 @@ use crate::keyframe::KeySet;
 pub struct CameraRoot {
     /// the target the camera is pointing at
     pub interest: ModelTransform,
-    // model_transform: ModelTransform,
+    #[serde(flatten)]
+    pub model_transform: ModelTransform,
     pub view_point: ViewPoint,
 }
 
@@ -41,7 +42,6 @@ pub struct ViewPoint {
     pub roll: Option<KeySet>,
     #[serde(flatten)]
     pub fov: FieldOfView,
-    // fov_is_horizontal: u8,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
