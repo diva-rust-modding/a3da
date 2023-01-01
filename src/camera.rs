@@ -8,7 +8,8 @@ pub struct CameraRoot {
     /// the target the camera is pointing at
     pub interest: ModelTransform,
     #[serde(flatten)]
-    pub model_transform: ModelTransform,
+    pub transform: ModelTransform,
+    /// camera properties
     pub view_point: ViewPoint,
 }
 
@@ -38,8 +39,12 @@ pub struct Vec3<T> {
 pub struct ViewPoint {
     #[serde(rename = "aspect")]
     pub aspect_ratio: f32,
-    pub focal_length: Option<KeySet>,
-    pub roll: Option<KeySet>,
+    #[serde(flatten)]
+    pub transform: ModelTransform,
+    #[serde(default)]
+    pub focal_length: KeySet,
+    #[serde(default)]
+    pub roll: KeySet,
     #[serde(flatten)]
     pub fov: FieldOfView,
 }
@@ -49,6 +54,6 @@ pub struct FieldOfView {
     #[serde(rename = "fov_is_horizontal")]
     horizontal: u8,
     /// The angle of view in radians
-    #[serde(rename = "fov")]
-    value: Option<KeySet>,
+    #[serde(rename = "fov", default)]
+    value: KeySet,
 }
