@@ -3,13 +3,17 @@ use serde::{Deserialize, Serialize};
 pub mod camera;
 pub mod keyframe;
 pub mod metadata;
+pub mod object;
 
 use crate::camera::CameraRoot;
 use crate::metadata::Metadata;
+use crate::object::Object;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct A3da {
     pub camera_root: Vec<CameraRoot>,
+    #[serde(default, rename = "object")]
+    pub objects: Vec<Object>,
     pub play_control: PlayControl,
     #[serde(rename = "_")]
     pub metadata: Metadata,
