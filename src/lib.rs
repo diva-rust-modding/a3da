@@ -11,7 +11,8 @@ use crate::object::Object;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct A3da {
-    pub camera_root: Vec<CameraRoot>,
+    #[serde(default, rename = "camera_root")]
+    pub camera_roots: Vec<CameraRoot>,
     #[serde(default, rename = "object")]
     pub objects: Vec<Object>,
     pub play_control: PlayControl,
